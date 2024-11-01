@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav">
+        <a href="#" class="logo" onclick="showCatalog()"><img src="img/logo.png" alt=""></a>
+        <div class="nav-list">
+            <button id="login-button" class="join" onclick="showLogin()">Войти</button>
+            <img id="profile-icon" src="https://icons.iconarchive.com/icons/graphicloads/flat-finance/128/person-icon.png" alt="" onclick="showProfile()" title="Вы вошли в аккаунт">
+            <button id="cart-button" onclick="showCart()">
+                <img src="https://cdn-icons-png.flaticon.com/512/5102/5102639.png" alt="Корзина" title="Корзина">
+            </button>
+            <button id="logout-button" onclick="logout()">Выйти</button>
+            <label class="theme-switch" title="Сменить тему">
+                <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+                <span class="slider"></span>
+            </label>
+            
+        </div>
+        
+        <div id="notification" class="notification"></div>
+    </nav>
+    <div id="app">
+        
+        <div id="reg" class="page">
+            <h2>Регистрация</h2>
+            <input type="email" id="reg-email" placeholder="Email" required>
+            <input type="password" id="reg-password" placeholder="Пароль" required>
+            <button onclick="registerUser()">Зарегистрироваться</button>
+            <p>Уже есть аккаунт? <a href="#" onclick="showLogin()">Войти</a></p>
+        </div>
+
+        <div id="login" class="page">
+            <h2>Вход</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Пароль" required>
+            <button onclick="loginUser()">Войти</button>
+            <p>Нет аккаунта? <a href="#" onclick="showReg()">Зарегистрироваться</a></p>
+        </div>
+
+        <div id="catalog" class="page">
+            <h2>Каталог товаров</h2>
+            <input type="text" id="search" placeholder="Поиск по названию" oninput="filterProducts()">
+            <select id="category-filter" onchange="filterProducts()">
+                <option value="">Все категории</option>
+            </select>
+            <select id="sort-price" onchange="filterProducts()">
+                <option value="">По популярности</option>
+                <option value="asc">По возрастанию</option>
+                <option value="desc">По убыванию</option>
+            </select>
+            <div id="product-list"></div>
+        </div>
+
+        <div id="cart" class="page">
+            <h2>Корзина</h2>
+            <div id="cart-list"></div>
+            <p id="total-price">ИТОГО: 0 USD</p>
+            <button onclick="clearCart()">Очистить корзину</button>
+            <button onclick="showCatalog()">Назад в каталог</button>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+    <footer id="footer">
+        <p>&copy; 2024 Store.</p>
+        <div class="footer-content">
+            <a href="#" onclick="showModal('about')">О нас</a>
+            <a href="#" onclick="showModal('contacts')">Контакты</a>
+            <a href="#">г.Астана</a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
